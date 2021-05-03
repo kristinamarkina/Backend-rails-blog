@@ -6,4 +6,7 @@ class PagesController < ApplicationController
     @page = Page.find(params[:id])
     render string: @page.title
   end
+  def new
+    @page = Page.new
+    end
 end
