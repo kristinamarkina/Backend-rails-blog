@@ -4,9 +4,14 @@ class PagesController < ApplicationController
   end
   def show
     @page = Page.find(params[:id])
-    render string: @page.title
   end
   def new
     @page = Page.new
-    end
+  end
+  def create
+    page_params = params.require(:page).permit(:title, :body, :slug)
+    @page = Page.new(page_params)
+    @page.save
+    redirect_to @page
+  end
 end
